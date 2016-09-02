@@ -31,8 +31,11 @@ class PagesController extends AppController
 
     public function home()
     {
+        $this->loadModel('Configs');
+
         try {
-            $this->throwSomething();
+            //$this->throwSomething(); This always works fine
+            $this->Configs->getValue('something');
         } catch (CoreConfigKeyNotFoundException $e) {
             $this->Flash->error('exception caught');
         }
